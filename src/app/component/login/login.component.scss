@@ -49,10 +49,10 @@
                 max-width: 370px;
             }
 
-            [class*='ng-untouched ng-valid ng-dirty'] {
-                width: 100%;
-                max-width: 370px;
-            }
+            // [class*='ng-untouched ng-valid ng-dirty'] {
+            //     width: 100%;
+            //     max-width: 370px;
+            // }
 
             [class*='ng-valid ng-dirty ng-touched'] {
                 width: 100%;
