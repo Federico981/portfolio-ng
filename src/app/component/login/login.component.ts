@@ -20,6 +20,8 @@ interface Form {
 
 export class LoginComponent {
 
+  userLogged = JSON.parse(localStorage.getItem('user')!)
+
   formLogin: Form = {
     email: '',
     password: '',
@@ -30,6 +32,9 @@ export class LoginComponent {
   errorMessages: { [key: string]: string } = {};
 
   hidePassword: boolean = false;
+
+  onInit() {
+  }
 
   //Errori vari
   setError(field: string, message: string) {
@@ -59,6 +64,8 @@ export class LoginComponent {
   onSubmit() {
     this.clearErrors();
 
+    console.log('EMAIL:', this.userLogged.email);
+    console.log('PASSWORD:', this.userLogged.password);
     const result = this.loginService.validLogin(this.formLogin.email, this.formLogin.password)
     switch (result) {
       case 'email not valid':
@@ -68,7 +75,10 @@ export class LoginComponent {
         this.setError('password', 'password not valid')
         break;
       case 'valid login':
-        return console.log('login')
+        this.router.navigate(['/home'])
+        console.log('login valida');
+        break;
     }
+    console.log('result', result)
   }
 }

@@ -33,14 +33,22 @@ export class RegistrationService {
 
   //Controllo che la login sia valida
   validLogin(email: string, password: string): string {
-    const user = this.users.find(u => u.email === email);
-    if (!user) {
+    const users = JSON.parse(localStorage.getItem('user') || '[]');
+    console.log('users', users)
+    const userFound = users && users.find((user: any) => user.email === email && user.password === password);
+    const emailExists = users && users.some((user: any) => user.email === email);
+    const passwordExists = users && users.some((user: any) => user.password === password);
+
+    if (userFound) {
+      return 'valid login';
+    } else if (!emailExists) {
       return 'email not valid';
-    }
-    if (user.password !== password) {
+    } else if (!passwordExists) {
       return 'password not valid';
+    } else {
+      return 'email and password not valid';
     }
-    return 'valid login';
   }
+
 
 }

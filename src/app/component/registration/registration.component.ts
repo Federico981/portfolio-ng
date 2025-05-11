@@ -92,6 +92,7 @@ export class RegistrationComponent {
 
   // Funzione per il submit del form
   submitForm() {
+    // let arrayUsers = [];
     // Controlla che non ci siano errori
     if (Object.keys(this.errorMessages).length === 0) {
       const newUser: User = {
@@ -101,7 +102,20 @@ export class RegistrationComponent {
         password: this.form.password
       };
 
+      // Recupera gli utenti esistenti dal localStorage (se ce ne sono)
+      const existingUsers = JSON.parse(localStorage.getItem('user') || '[]');
+
+      // Aggiungi il nuovo utente
+      existingUsers.push(newUser);
+
       this.serviceRegistration.addUser(newUser);
+      // arrayUsers.push(newUser);
+
+      // Salva di nuovo l'array aggiornato
+      localStorage.setItem('user', JSON.stringify(existingUsers));
+
+      // localStorage.setItem('user', JSON.stringify(arrayUsers));
+      this.router.navigate(['/home']);
       console.log('Utente registrato con successo!', newUser);
     } else {
       console.log('Errore durante la registrazione:', this.errorMessages);
