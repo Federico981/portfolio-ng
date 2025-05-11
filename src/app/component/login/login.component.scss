@@ -1,0 +1,92 @@
+.container_login {
+    background-color: #93c5c5;
+    height: 100vh; // meglio 100vh per occupare tutta la finestra
+    width: 100%;
+    display: flex;
+    justify-content: center; // centra orizzontalmente
+    align-items: center; // centra verticalmente
+
+    .containerForm {
+        width: 400px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        padding: 18px;
+        background-color: #f9fdfa;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+
+        .loginTitle {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .loginForm {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 370px;
+
+            .passwordField {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .buttonEye {
+                    color: #70b3b3;
+                    background-color: white;
+                    margin-top: 0px;
+                    padding-top: 7px;
+                }
+            }
+
+            [class*='ng-untouched ng-pristine ng-valid'] {
+                width: 100%;
+                max-width: 370px;
+            }
+
+            label {
+                font-weight: 500;
+            }
+
+            input {
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                font-size: 14px;
+            }
+
+            button {
+                margin-top: 16px;
+                padding: 12px;
+                background-color: #70b3b3;
+                color: white;
+                border: none;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+
+                &:disabled {
+                    background-color: #ccc;
+                    cursor: not-allowed;
+                }
+            }
+
+            div[ng-reflect-ng-if] {
+                color: red;
+                font-size: 13px;
+            }
+        }
+
+        .linkRegister {
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}
