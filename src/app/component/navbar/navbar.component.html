@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="logo">Federico</div>
+
+    <ul class="menu">
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.route" routerLinkActive="active">{{
+          item.label
+        }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>

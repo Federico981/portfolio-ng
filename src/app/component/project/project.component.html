@@ -1,0 +1,12 @@
+<section class="skills-section">
+  <h2>💼 Competenze Tecniche</h2>
+  <div class="skills-grid">
+    <div class="skill-card" *ngFor="let skill of skills">
+      <img [src]="skill.icon" [alt]="skill.name" class="skill-icon" />
+      <div class="skill-info">
+        <h3>{{ skill.name }}</h3>
+        <p>{{ skill.level }}</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,15 +2,16 @@
     <div class="containerForm">
         <div class="registerTitle">Register</div>
         <div class="registerForm">
+
             <label for="name">Nome:</label>
             <input type="text" id="name" [(ngModel)]="form.name" name="name"
                 (ngModelChange)="changeField('name', $event)">
+
             <label for="surname">Cognome:</label>
-
             <input type="text" id="surname" [(ngModel)]="form.surname" name="surname"
-                (ngModelChange)="changeField('surname', $event)">
-            <label for="email">Email:</label>
+            (ngModelChange)="changeField('surname', $event)">
 
+            <label for="email">Email:</label>
             <input type="email" id="email" [(ngModel)]="form.email" name="email" (ngModelChange)="changeEmail($event)">
             <div *ngIf="errorMessages['email']">{{ errorMessages['email'] }}</div>
 

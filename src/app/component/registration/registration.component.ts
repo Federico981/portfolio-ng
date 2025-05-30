@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { RegistrationService, User } from '../../service/registrationAndLogin.service';
+import {
+  RegistrationService,
+  User,
+} from '../../service/registrationAndLogin.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -18,10 +21,9 @@ interface Form {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.scss'
+  styleUrl: './registration.component.scss',
 })
 export class RegistrationComponent {
-
   form: Form = {
     name: '',
     surname: '',
@@ -33,7 +35,10 @@ export class RegistrationComponent {
 
   errorMessages: { [key: string]: string } = {}; // Per tenere traccia degli errori
 
-  constructor(private router: Router, public serviceRegistration: RegistrationService) { }
+  constructor(
+    private router: Router,
+    public serviceRegistration: RegistrationService
+  ) {}
 
   // Funzione per gestire gli errori
   setError(field: string, message: string) {
@@ -72,7 +77,10 @@ export class RegistrationComponent {
   // Controllo password
   changePassword(newPassword: string) {
     this.changeField('password', newPassword);
-    if (this.form.confirmPassword && this.form.password !== this.form.confirmPassword) {
+    if (
+      this.form.confirmPassword &&
+      this.form.password !== this.form.confirmPassword
+    ) {
       this.setError('confirmPassword', 'Le password non corrispondono');
     } else {
       delete this.errorMessages['password'];
@@ -99,7 +107,7 @@ export class RegistrationComponent {
         name: this.form.name,
         surname: this.form.surname,
         email: this.form.email,
-        password: this.form.password
+        password: this.form.password,
       };
 
       // Recupera gli utenti esistenti dal localStorage (se ce ne sono)
@@ -111,10 +119,9 @@ export class RegistrationComponent {
       this.serviceRegistration.addUser(newUser);
       // arrayUsers.push(newUser);
 
-      // Salva di nuovo l'array aggiornato
+      // Salvo di nuovo l'array aggiornato
       localStorage.setItem('user', JSON.stringify(existingUsers));
-
-      // localStorage.setItem('user', JSON.stringify(arrayUsers));
+      localStorage.setItem('loggedUser', JSON.stringify(existingUsers));
       this.router.navigate(['/home']);
       console.log('Utente registrato con successo!', newUser);
     } else {
