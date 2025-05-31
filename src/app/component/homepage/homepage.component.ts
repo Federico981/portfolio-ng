@@ -9,8 +9,6 @@ import {
 } from '../../service/message-board.service';
 import { SenderBoardComponent } from '../sender-board/sender-board.component';
 import { FormsModule } from '@angular/forms';
-import { Skill, SkillsService } from '../../service/skills.service';
-
 @Component({
   selector: 'app-homepage',
   standalone: true,

@@ -1,0 +1,48 @@
+<form (ngSubmit)="sendForm()" #contactForm="ngForm" novalidate>
+  <h2>Contattaci</h2>
+  <p>Compila il form e ti risponderemo il prima possibile.</p>
+
+  <label for="name">Nome</label>
+  <input
+    id="name"
+    name="name"
+    [(ngModel)]="form.name"
+    type="text"
+    placeholder="Il tuo nome"
+    required
+  />
+
+  <label for="email">Email</label>
+  <input
+    id="email"
+    name="email"
+    [(ngModel)]="form.email"
+    type="email"
+    placeholder="esempio@mail.com"
+    required
+  />
+
+  <label for="sentences">Messaggio</label>
+  <textarea
+    id="sentences"
+    name="sentences"
+    [(ngModel)]="form.sentences"
+    placeholder="Scrivi qui il tuo messaggio..."
+    rows="5"
+    required
+  ></textarea>
+
+  <button type="submit" [disabled]="!contactForm.form.valid">Invia</button>
+
+  <p class="privacy-note">
+    I dati verranno trattati secondo la
+    <a href="/privacy" target="_blank" rel="noopener noreferrer">
+      privacy policy
+    </a>
+    .
+  </p>
+
+  <p class="thank-you" *ngIf="thankYouMessage">
+    Grazie per averci contattato! Ti risponderemo presto.
+  </p>
+</form>

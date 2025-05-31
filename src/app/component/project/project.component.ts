@@ -1,21 +1,31 @@
 import { Component } from '@angular/core';
 import { Skill, SkillsService } from '../../service/skills.service';
 import { CommonModule } from '@angular/common';
+import { ProjectsService, Repo } from '../../service/projects.service';
+import { SenderQuizComponent } from '../sender-quiz/sender-quiz.component';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SenderQuizComponent],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss',
 })
 export class ProjectComponent {
   skills: Skill[] = [];
-  constructor(public skillService: SkillsService) {}
+  projects: Repo[] = [];
+  constructor(
+    public skillService: SkillsService,
+    public repo: ProjectsService
+  ) {}
 
   ngOnInit() {
     this.skillService.skillManagement.subscribe((skill: Skill[]) => {
       this.skills = skill;
+    });
+
+    this.repo.repoProject.subscribe((repo) => {
+      this.projects = repo;
     });
   }
 }

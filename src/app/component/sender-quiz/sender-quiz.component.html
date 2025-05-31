@@ -1,0 +1,29 @@
+<div class="quiz-container">
+  <!-- Se il quiz non è finito, mostriamo la domanda -->
+  <div *ngIf="!quizFinished && currentQuestion" class="question-card">
+    <h3>Domanda {{ userAnswers.length + 1 }} / {{ allQuestions.length }}</h3>
+    <p class="question-text">{{ currentQuestion.question }}</p>
+
+    <div class="options-list">
+      <button
+        *ngFor="let opt of currentQuestion.options"
+        (click)="answer(opt)"
+        class="option-button"
+      >
+        {{ opt }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Se il quiz è finito, mostriamo il punteggio e il bottone di restart -->
+  <div *ngIf="quizFinished" class="result-card">
+    <h3>Quiz Terminato!</h3>
+    <p>
+      Hai risposto correttamente a <strong>{{ score }}</strong> di
+      <strong>{{ allQuestions.length }}</strong> domande.
+    </p>
+    <button (click)="restartQuiz()" class="restart-button">
+      Riprova il Quiz
+    </button>
+  </div>
+</div>

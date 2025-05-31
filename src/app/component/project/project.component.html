@@ -10,3 +10,24 @@
     </div>
   </div>
 </section>
+
+<section class="projects-section">
+  <h2>🚀 Progetti Realizzati</h2>
+  <div class="projects-grid">
+    <div class="project-card" *ngFor="let project of projects">
+      <img [src]="project.img" [alt]="project.name" class="project-img" />
+      <div class="project-info">
+        <h3>{{ project.name }}</h3>
+        <p class="technologies">
+          <span *ngFor="let tech of project.technologies" class="tech-badge">
+            {{ tech }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects-section">
+  <app-sender-quiz></app-sender-quiz>
+</section>
