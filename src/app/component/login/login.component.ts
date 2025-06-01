@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 
 interface Form {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
 }
 
 @Component({
@@ -15,26 +15,26 @@ interface Form {
   standalone: true,
   imports: [MatIconModule, FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
-
 export class LoginComponent {
-
-  userLogged = JSON.parse(localStorage.getItem('user')!)
+  userLogged = JSON.parse(localStorage.getItem('user')!);
 
   formLogin: Form = {
     email: '',
     password: '',
-  }
+  };
 
-  constructor(private router: Router, public loginService: RegistrationService) { }
+  constructor(
+    private router: Router,
+    public loginService: RegistrationService
+  ) {}
 
   errorMessages: { [key: string]: string } = {};
 
   hidePassword: boolean = false;
 
-  onInit() {
-  }
+  onInit() {}
 
   //Errori vari
   setError(field: string, message: string) {
@@ -54,7 +54,7 @@ export class LoginComponent {
   }
 
   goToRegister() {
-    this.router.navigate(['/registration'])
+    this.router.navigate(['/registration']);
   }
 
   togglePasswordVisibility() {
@@ -66,19 +66,23 @@ export class LoginComponent {
 
     console.log('EMAIL:', this.userLogged.email);
     console.log('PASSWORD:', this.userLogged.password);
-    const result = this.loginService.validLogin(this.formLogin.email, this.formLogin.password)
+    const result = this.loginService.validLogin(
+      this.formLogin.email,
+      this.formLogin.password
+    );
     switch (result) {
       case 'email not valid':
         this.setError('email', 'email not valid');
         break;
       case 'password not valid':
-        this.setError('password', 'password not valid')
+        this.setError('password', 'password not valid');
         break;
       case 'valid login':
-        this.router.navigate(['/home'])
+        localStorage.setItem('isLoggedIn', 'true');
+        this.router.navigate(['/home']);
         console.log('login valida');
         break;
     }
-    console.log('result', result)
+    console.log('result', result);
   }
 }

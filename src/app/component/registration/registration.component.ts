@@ -122,6 +122,7 @@ export class RegistrationComponent {
       // Salvo di nuovo l'array aggiornato
       localStorage.setItem('user', JSON.stringify(existingUsers));
       localStorage.setItem('loggedUser', JSON.stringify(existingUsers));
+      localStorage.setItem('isLoggedIn', 'true');
       this.router.navigate(['/home']);
       console.log('Utente registrato con successo!', newUser);
     } else {

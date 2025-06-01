@@ -32,11 +32,27 @@
         font-weight: 500;
         transition: color 0.3s ease;
 
-        &:hover,
-        &.active {
-          color: #007bff; // blu elegante per l'active
+        &:hover {
+          color: #007bff;
         }
       }
+
+      // Applica .active solo se NON è logout-link
+      a.active:not(.logout-link) {
+        color: #007bff;
+      }
+    }
+  }
+
+  .logout-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #007bff;
     }
   }
 }

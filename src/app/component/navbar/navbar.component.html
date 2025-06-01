@@ -4,9 +4,23 @@
 
     <ul class="menu">
       <li *ngFor="let item of menuItems">
-        <a [routerLink]="item.route" routerLinkActive="active">{{
-          item.label
-        }}</a>
+        <!-- Caso logout -->
+        <a
+          *ngIf="item.label === 'Logout'; else normalLink"
+          (click)="logout()"
+          class="logout-link"
+          >{{ item.label }}</a
+        >
+
+        <!-- Caso normale -->
+        <ng-template #normalLink>
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >{{ item.label }}</a
+          >
+        </ng-template>
       </li>
     </ul>
   </div>

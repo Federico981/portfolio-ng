@@ -1,6 +1,6 @@
 <form (ngSubmit)="sendForm()" #contactForm="ngForm" novalidate>
-  <h2>Contattaci</h2>
-  <p>Compila il form e ti risponderemo il prima possibile.</p>
+  <h2>Contattami</h2>
+  <p>Compila il form e ti risponderò il prima possibile.</p>
 
   <label for="name">Nome</label>
   <input
@@ -36,13 +36,17 @@
 
   <p class="privacy-note">
     I dati verranno trattati secondo la
-    <a href="/privacy" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.privacypolicies.com/live/ac14fbbf-8634-4b7f-9629-db180f6caa6f"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       privacy policy
     </a>
     .
   </p>
 
   <p class="thank-you" *ngIf="thankYouMessage">
-    Grazie per averci contattato! Ti risponderemo presto.
+    Grazie per avermi contattato! Ti risponderò presto.
   </p>
 </form>
