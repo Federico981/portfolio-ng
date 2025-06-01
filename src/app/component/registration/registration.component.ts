@@ -70,20 +70,39 @@ export class RegistrationComponent {
     );
   }
 
-  // Controllo email
+  private isValidEmail(email: string): boolean {
+    // Regex base per email valida
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Modifica email
   changeEmail(newEmail: string) {
     this.changeField('email', newEmail);
-    if (this.serviceRegistration.isEmailTaken(newEmail)) {
+
+    if (!this.isValidEmail(newEmail)) {
+      this.setError('email', 'Formato email non valido');
+    } else if (this.serviceRegistration.isEmailTaken(newEmail)) {
       this.setError('email', 'Email già in uso');
     } else {
       delete this.errorMessages['email'];
+    }
+
+    // Se la conferma email è già scritta, riconfronta anche quella
+    if (this.form.confirmEmail && this.form.confirmEmail !== newEmail) {
+      this.setError('confirmEmail', 'Le email non corrispondono');
+    } else {
+      delete this.errorMessages['confirmEmail'];
     }
   }
 
   // Controllo conferma email
   changeConfirmEmail(newConfirmEmail: string) {
     this.changeField('confirmEmail', newConfirmEmail);
-    if (this.form.email !== newConfirmEmail) {
+
+    if (!this.isValidEmail(newConfirmEmail)) {
+      this.setError('confirmEmail', 'Formato email non valido');
+    } else if (this.form.email !== newConfirmEmail) {
       this.setError('confirmEmail', 'Le email non corrispondono');
     } else {
       delete this.errorMessages['confirmEmail'];

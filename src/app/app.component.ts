@@ -33,8 +33,8 @@ export class AppComponent {
       .subscribe((event) => {
         const currentUrl = (event as NavigationEnd).urlAfterRedirects;
         this.showNavbar = !['/login', '/registration'].includes(currentUrl);
+        window.scrollTo(0, 0);
       });
-
     // Lingue supportate
     translate.addLangs(['en', 'it']);
     translate.setDefaultLang('en');
