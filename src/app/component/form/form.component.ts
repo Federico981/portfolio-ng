@@ -3,11 +3,12 @@ import { Form, FormService } from '../../service/form.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import emailjs from 'emailjs-com';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './form.component.html',
   // styleUrl: './form.component.scss',
   styleUrls: ['./form.component.scss'],

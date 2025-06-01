@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizQuestion, QuizService } from '../../service/quiz.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sender-quiz',
   standalone: true,
-  imports: [CommonModule], // Permette di usare *ngIf, *ngFor, etc.
+  imports: [CommonModule, TranslateModule], // Permette di usare *ngIf, *ngFor, etc.
   templateUrl: './sender-quiz.component.html',
   styleUrls: ['./sender-quiz.component.scss'],
 })
@@ -19,13 +20,14 @@ export class SenderQuizComponent implements OnInit {
   constructor(private quizService: QuizService) {}
 
   ngOnInit() {
-    // Carichiamo l'array completo di domande (opzionale, per mostrare numero di domande)
-    this.allQuestions = this.quizService.getAllQuestions();
+    // Aspetta il caricamento delle domande
+    this.quizService.questions$.subscribe((questions) => {
+      this.allQuestions = questions;
+    });
 
-    // Sottoscriviamoci all’indice corrente
-    this.quizService.questions$.subscribe((index: number) => {
-      // Se l’indice è oltre la lunghezza dell’array, significa che il quiz è terminato
-      if (index >= this.allQuestions.length) {
+    // ⬇️ Iscriviti anche all’indice corrente
+    this.quizService.currentQuestionIndex$.subscribe((index) => {
+      if (index >= this.allQuestions.length && this.allQuestions.length > 0) {
         this.quizFinished = true;
         this.computeScore();
       } else {
@@ -33,13 +35,9 @@ export class SenderQuizComponent implements OnInit {
       }
     });
 
-    // Sottoscriviamoci alle risposte date dall’utente (opzionale, per mostrare in tempo reale)
-    this.quizService.answers$.subscribe((answers: string[]) => {
+    this.quizService.answers$.subscribe((answers) => {
       this.userAnswers = answers;
     });
-
-    // Carichiamo subito la prima domanda
-    this.currentQuestion = this.quizService.getCurrentQuestion();
   }
 
   /** Chiamato quando l'utente sceglie una delle opzioni */

@@ -1,13 +1,13 @@
 // src/app/constants/menu-items.ts
 export interface MenuItem {
-  label: string;
+  labelKey: string;
   route: string;
 }
 
 export const MENU_ITEMS: MenuItem[] = [
-  { label: 'Home', route: '/home' },
-  { label: 'Progetti e Competenze', route: '/projects' },
-  { label: 'Contatti', route: '/contact' },
-  { label: 'Chi sono', route: '/personal-page' },
-  { label: 'Logout', route: '/' },
+  { labelKey: 'NAV.HOME', route: '/home' },
+  { labelKey: 'NAV.PROJECTS', route: '/projects' },
+  { labelKey: 'NAV.CONTACT', route: '/contact' },
+  { labelKey: 'NAV.PERSONAL_PAGE', route: '/personal-page' },
+  { labelKey: 'NAV.LOGOUT', route: '/' },
 ];

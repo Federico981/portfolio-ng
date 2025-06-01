@@ -9,10 +9,17 @@ import {
 } from '../../service/message-board.service';
 import { SenderBoardComponent } from '../sender-board/sender-board.component';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, SenderBoardComponent, FormsModule],
+  imports: [
+    CommonModule,
+    NavbarComponent,
+    SenderBoardComponent,
+    FormsModule,
+    TranslateModule,
+  ],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'], // ← correzione
 })

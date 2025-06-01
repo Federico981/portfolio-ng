@@ -1,16 +1,32 @@
 <footer class="footer">
   <div class="footer-content">
-    <p>&copy; {{ currentYear }} Federico. Tutti i diritti riservati.</p>
-    <div class="footer-links">
-      <a
-        href="https://www.privacypolicies.com/live/ac14fbbf-8634-4b7f-9629-db180f6caa6f"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Privacy Policy</a
-      >
-      <!-- <a href="#">Privacy Policy</a> -->
-      <a href="/contact">Contatti</a>
-      <a href="/personal-page">Chi sono</a>
+    <div class="footer-links-row">
+      <div class="footer-links">
+        <a
+          href="https://www.privacypolicies.com/live/8d12b245-7523-42af-92ab-978c58a20ebd"
+          target="_blank"
+          >Privacy</a
+        >
+        <a [routerLink]="'/personal-page'">{{ "ABOUT.ME" | translate }}</a>
+        <a [routerLink]="'/contact'">{{ "ABOUT.CONTACTS" | translate }}</a>
+      </div>
+
+      <div class="footer-lang">
+        <a
+          href="#"
+          (click)="switchLanguage('it'); $event.preventDefault()"
+          [class.active]="currentLang === 'it'"
+          >🇮🇹 IT</a
+        >
+        <a
+          href="#"
+          (click)="switchLanguage('en'); $event.preventDefault()"
+          [class.active]="currentLang === 'en'"
+          >🇬🇧 EN</a
+        >
+      </div>
     </div>
+
+    <p>&copy; {{ "ABOUT.COPYRIGHT" | translate }}</p>
   </div>
 </footer>

@@ -2,8 +2,10 @@
   <input
     [(ngModel)]="newBoard.text"
     type="text"
-    placeholder="Scrivi un messaggio..."
+    [placeholder]="'HOME.PLACEHOLDER_MESSAGES' | translate"
     class="board-input"
   />
-  <button (click)="writeBoard()" class="board-button">Pubblica</button>
+  <button (click)="writeBoard()" class="board-button">
+    {{ "BOARD.SHARE" | translate }}
+  </button>
 </div>

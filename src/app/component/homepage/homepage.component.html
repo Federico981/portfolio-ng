@@ -1,10 +1,10 @@
 <div class="homepage">
   <section class="hero">
-    <h1>Ciao {{ username }} 👋</h1>
+    <h1>{{ "HOME.CHEER" | translate }} {{ username }} 👋</h1>
   </section>
 
   <section class="skills">
-    <h2>Competenze tecniche</h2>
+    <h2>{{ "HOME.SKILLS" | translate }}</h2>
     <div class="skills-grid">
       <div *ngFor="let tech of technicalKnowledge" class="skill-card">
         <h3>{{ tech.name }}</h3>
@@ -16,10 +16,10 @@
   </section>
 
   <div class="board-container">
-    <h2>Bacheca pubblica</h2>
+    <h2>{{ "HOME.BOARD" | translate }}</h2>
     <app-sender-board></app-sender-board>
 
-    <div class="board-title">Messaggi pubblicati</div>
+    <div class="board-title">{{ "HOME.MESSAGES" | translate }}</div>
 
     <div class="messages-list">
       <div class="message-card" *ngFor="let message of messages">

@@ -7,6 +7,7 @@ import { filter } from 'rxjs/operators';
 import { LoginComponent } from './component/login/login.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -26,12 +27,20 @@ import { FooterComponent } from './component/footer/footer.component';
 export class AppComponent {
   showNavbar = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private translate: TranslateService) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
         const currentUrl = (event as NavigationEnd).urlAfterRedirects;
         this.showNavbar = !['/login', '/registration'].includes(currentUrl);
       });
+
+    // Lingue supportate
+    translate.addLangs(['en', 'it']);
+    translate.setDefaultLang('en');
+
+    // Prova a usare la lingua del browser
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang?.match(/en|it/) ? browserLang : 'en');
   }
 }

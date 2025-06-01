@@ -6,29 +6,26 @@
       class="profile-img"
     />
     <div class="intro">
-      <h1>Ciao, sono {{ name }}</h1>
+      <h1>{{ "ABOUT.PRESENTATION" | translate }} {{ name }}</h1>
       <p>
-        Sviluppatore frontend appassionato di tecnologie web. Amo creare
-        interfacce intuitive, performanti e accessibili. Al momento sto
-        approfondendo Angular e lavorando a progetti personali per migliorare
-        ogni giorno.
+        {{ "ABOUT.SELF_DESCRIPTION" | translate }}
       </p>
     </div>
   </div>
 
   <div class="skills-section">
-    <h2>Competenze principali</h2>
+    <h2>{{ "ABOUT.MAIN_SKILLS" | translate }}</h2>
     <ul>
       <li>Angular (Standalone Components, Routing, Forms, RxJS)</li>
       <li>React (Hooks, Routing, Redux, Form Handling)</li>
       <li>JavaScript / TypeScript</li>
       <li>HTML5, CSS3, SCSS, Responsive Design</li>
-      <li>Versionamento con Git</li>
+      <li>Git</li>
     </ul>
   </div>
 
   <div class="social-links">
-    <h2>Seguimi</h2>
+    <h2>{{ "ABOUT.FOLLOW_ME" | translate }}</h2>
     <a
       href="https://www.linkedin.com/in/federico-luca-cilia-80866720a/"
       target="_blank"

@@ -6,6 +6,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Form {
   name: string;
@@ -19,7 +20,7 @@ interface Form {
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss',
 })
@@ -32,6 +33,9 @@ export class RegistrationComponent {
     password: '',
     confirmPassword: '',
   };
+
+  // fieldsCompleted: { [key in keyof Form]?: boolean } = {};
+  privacyConsent: boolean = false;
 
   errorMessages: { [key: string]: string } = {}; // Per tenere traccia degli errori
 
@@ -48,10 +52,22 @@ export class RegistrationComponent {
   // Funzione generica per cambiare i valori del form
   changeField(field: keyof Form, value: string) {
     this.form[field] = value;
+    // this.fieldsCompleted[field] = value.trim().length > 0;
   }
 
   get hasErrors(): boolean {
     return Object.keys(this.errorMessages).length > 0;
+  }
+
+  get emptyFields(): boolean {
+    return (
+      this.form.name === '' ||
+      this.form.surname === '' ||
+      this.form.email === '' ||
+      this.form.confirmEmail === '' ||
+      this.form.password === '' ||
+      this.form.confirmPassword === ''
+    );
   }
 
   // Controllo email
@@ -100,9 +116,19 @@ export class RegistrationComponent {
 
   // Funzione per il submit del form
   submitForm() {
-    // let arrayUsers = [];
-    // Controlla che non ci siano errori
-    if (Object.keys(this.errorMessages).length === 0) {
+    if (!this.privacyConsent) {
+      console.log('Devi accettare la privacy policy');
+      return;
+    }
+    if (
+      this.form.name !== '' &&
+      this.form.surname !== '' &&
+      this.form.email !== '' &&
+      this.form.confirmEmail !== '' &&
+      this.form.password !== '' &&
+      this.form.confirmPassword !== '' &&
+      Object.keys(this.errorMessages).length === 0
+    ) {
       const newUser: User = {
         name: this.form.name,
         surname: this.form.surname,
@@ -110,22 +136,27 @@ export class RegistrationComponent {
         password: this.form.password,
       };
 
-      // Recupera gli utenti esistenti dal localStorage (se ce ne sono)
-      const existingUsers = JSON.parse(localStorage.getItem('user') || '[]');
+      // 1. Carico l’array esistente
+      const existingUsers: User[] = JSON.parse(
+        localStorage.getItem('user') || '[]'
+      );
 
-      // Aggiungi il nuovo utente
+      // 2. Aggiungo il nuovo utente
       existingUsers.push(newUser);
 
+      // 3. Aggiorno service e localStorage per la lista
       this.serviceRegistration.addUser(newUser);
-      // arrayUsers.push(newUser);
-
-      // Salvo di nuovo l'array aggiornato
+      // (Se il service aggiorna già localStorage, non serve fare di nuovo setItem('user', …))
       localStorage.setItem('user', JSON.stringify(existingUsers));
-      localStorage.setItem('loggedUser', JSON.stringify(existingUsers));
+
+      // 4. Salvo SOLO newUser come utente loggato
+      localStorage.setItem('loggedUser', JSON.stringify(newUser));
       localStorage.setItem('isLoggedIn', 'true');
+
       this.router.navigate(['/home']);
       console.log('Utente registrato con successo!', newUser);
-    } else {
+    }
+    {
       console.log('Errore durante la registrazione:', this.errorMessages);
     }
   }

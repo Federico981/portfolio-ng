@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 export interface Social {
   name: string;
@@ -10,7 +11,7 @@ export interface Social {
 @Component({
   selector: 'app-social-contacts',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './social-contacts.component.html',
   styleUrl: './social-contacts.component.scss',
 })

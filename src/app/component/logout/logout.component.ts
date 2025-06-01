@@ -12,7 +12,9 @@ export class LogoutComponent {
   constructor(private router: Router) {}
 
   logout() {
+    console.log('Eseguo logout');
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('loggedUser');
     this.router.navigate(['/login']);
   }
 }

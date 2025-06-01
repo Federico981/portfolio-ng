@@ -3,11 +3,12 @@ import { Skill, SkillsService } from '../../service/skills.service';
 import { CommonModule } from '@angular/common';
 import { ProjectsService, Repo } from '../../service/projects.service';
 import { SenderQuizComponent } from '../sender-quiz/sender-quiz.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule, SenderQuizComponent],
+  imports: [CommonModule, SenderQuizComponent, TranslateModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss',
 })

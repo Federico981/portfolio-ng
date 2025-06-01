@@ -6,11 +6,12 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../service/users.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sender-board',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './sender-board.component.html',
   styleUrl: './sender-board.component.scss',
 })

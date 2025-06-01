@@ -1,38 +1,110 @@
 <form (ngSubmit)="submitForm()" class="container_registration">
-    <div class="containerForm">
-        <div class="registerTitle">Register</div>
-        <div class="registerForm">
+  <div class="containerForm">
+    <div class="registerTitle">Register</div>
+    <div class="registerForm">
+      <label for="name">{{ "REGISTER.NAME" | translate }}</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="form.name"
+        name="name"
+        (ngModelChange)="changeField('name', $event)"
+      />
 
-            <label for="name">Nome:</label>
-            <input type="text" id="name" [(ngModel)]="form.name" name="name"
-                (ngModelChange)="changeField('name', $event)">
+      <label for="surname">{{ "REGISTER.SURNAME" | translate }}</label>
+      <input
+        type="text"
+        id="surname"
+        [(ngModel)]="form.surname"
+        name="surname"
+        (ngModelChange)="changeField('surname', $event)"
+      />
 
-            <label for="surname">Cognome:</label>
-            <input type="text" id="surname" [(ngModel)]="form.surname" name="surname"
-            (ngModelChange)="changeField('surname', $event)">
+      <label for="email">{{ "REGISTER.EMAIL" | translate }}</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="form.email"
+        name="email"
+        (ngModelChange)="changeEmail($event)"
+      />
+      <div *ngIf="errorMessages['email']">{{ errorMessages["email"] }}</div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" [(ngModel)]="form.email" name="email" (ngModelChange)="changeEmail($event)">
-            <div *ngIf="errorMessages['email']">{{ errorMessages['email'] }}</div>
+      <label for="confirmEmail">{{
+        "REGISTER.CONFIRM_EMAIL" | translate
+      }}</label>
+      <input
+        type="email"
+        id="confirmEmail"
+        [(ngModel)]="form.confirmEmail"
+        name="confirmEmail"
+        (ngModelChange)="changeConfirmEmail($event)"
+      />
+      <div *ngIf="errorMessages['confirmEmail']">
+        {{ errorMessages["confirmEmail"] }}
+      </div>
 
-            <label for="confirmEmail">Conferma Email:</label>
-            <input type="email" id="confirmEmail" [(ngModel)]="form.confirmEmail" name="confirmEmail"
-                (ngModelChange)="changeConfirmEmail($event)">
-            <div *ngIf="errorMessages['confirmEmail']">{{ errorMessages['confirmEmail'] }}</div>
+      <label for="password">{{ "REGISTER.PASSWORD" | translate }}</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="form.password"
+        name="password"
+        (ngModelChange)="changePassword($event)"
+      />
+      <div *ngIf="errorMessages['password']">
+        {{ errorMessages["password"] }}
+      </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" [(ngModel)]="form.password" name="password"
-                (ngModelChange)="changePassword($event)">
-            <div *ngIf="errorMessages['password']">{{ errorMessages['password'] }}</div>
+      <label for="confirmPassword">{{
+        "REGISTER.CONFIRM_PASSWORD" | translate
+      }}</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        [(ngModel)]="form.confirmPassword"
+        (ngModelChange)="(changeConfirmPassword)"
+      />
+      <div *ngIf="errorMessages['password']">
+        {{ errorMessages["password"] }}
+      </div>
 
-            <label for="confirmPassword">Conferma password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="form.confirmPassword"
-                (ngModelChange)="changeConfirmPassword">
-            <div *ngIf="errorMessages['password']">{{ errorMessages['password'] }}</div>
+      <div class="consent">
+        <input
+          type="checkbox"
+          id="privacyConsent"
+          [(ngModel)]="privacyConsent"
+          name="privacyConsent"
+          required
+        />
+        <label for="privacyConsent">
+          {{ "REGISTER.ACCEPT" | translate }}
+          <a
+            href="https://www.privacypolicies.com/live/8d12b245-7523-42af-92ab-978c58a20ebd"
+            target="_blank"
+          >
+            {{ "REGISTER.TERMS_CONDITIONS" | translate }}
+          </a>
+          {{ "REGISTER.DATA" | translate }}
+          <a
+            href="https://www.privacypolicies.com/live/8d12b245-7523-42af-92ab-978c58a20ebd"
+            target="_blank"
+            >privacy policy</a
+          >.
+        </label>
+      </div>
 
-            <button type="submit" [disabled]="hasErrors">Registrati</button>
+      <button
+        type="submit"
+        [disabled]="hasErrors || emptyFields || !privacyConsent"
+      >
+        {{ "REGISTER.REGISTER_LABEL" | translate }}
+      </button>
 
-            <a class="linkLogin" (click)="goToLogin()">Already have an account?</a>
-        </div>
+      <a class="linkLogin" (click)="goToLogin()">{{
+        "REGISTER.ALREADY_REGISTERED" | translate
+      }}</a>
     </div>
+  </div>
 </form>

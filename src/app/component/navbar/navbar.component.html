@@ -6,10 +6,10 @@
       <li *ngFor="let item of menuItems">
         <!-- Caso logout -->
         <a
-          *ngIf="item.label === 'Logout'; else normalLink"
+          *ngIf="item.route === '/'; else normalLink"
           (click)="logout()"
           class="logout-link"
-          >{{ item.label }}</a
+          >{{ item.labelKey | translate }}</a
         >
 
         <!-- Caso normale -->
@@ -18,7 +18,7 @@
             [routerLink]="item.route"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            >{{ item.label }}</a
+            >{{ item.labelKey | translate }}</a
           >
         </ng-template>
       </li>

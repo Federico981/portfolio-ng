@@ -1,7 +1,10 @@
 <div class="quiz-container">
   <!-- Se il quiz non è finito, mostriamo la domanda -->
   <div *ngIf="!quizFinished && currentQuestion" class="question-card">
-    <h3>Domanda {{ userAnswers.length + 1 }} / {{ allQuestions.length }}</h3>
+    <h3>
+      {{ "QUIZ_LABELS.QUESTION" | translate }} {{ userAnswers.length + 1 }} /
+      {{ allQuestions.length }}
+    </h3>
     <p class="question-text">{{ currentQuestion.question }}</p>
 
     <div class="options-list">
@@ -17,13 +20,15 @@
 
   <!-- Se il quiz è finito, mostriamo il punteggio e il bottone di restart -->
   <div *ngIf="quizFinished" class="result-card">
-    <h3>Quiz Terminato!</h3>
+    <h3>{{ "QUIZ_LABELS.QUIZ_END" | translate }}</h3>
     <p>
-      Hai risposto correttamente a <strong>{{ score }}</strong> di
-      <strong>{{ allQuestions.length }}</strong> domande.
+      {{ "QUIZ_LABELS.SCORE" | translate }} <strong>{{ score }}</strong>
+      {{ "QUIZ_LABELS.OF" | translate }}
+      <strong>{{ allQuestions.length }}</strong>
+      {{ "QUIZ_LABELS.QUESTIONS" | translate }}.
     </p>
     <button (click)="restartQuiz()" class="restart-button">
-      Riprova il Quiz
+      {{ "QUIZ_LABELS.TRY_AGAIN" | translate }}
     </button>
   </div>
 </div>

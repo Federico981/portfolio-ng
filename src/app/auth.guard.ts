@@ -21,6 +21,11 @@ export class AuthGuard implements CanActivate {
     const attemptingLoginOrReg =
       state.url === '/login' || state.url === '/registration';
 
+    console.log('AuthGuard check:', {
+      isLoggedIn,
+      url: state.url,
+    });
+
     if (!isLoggedIn && attemptingLoginOrReg) {
       return true;
     }

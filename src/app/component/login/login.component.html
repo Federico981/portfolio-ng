@@ -1,23 +1,44 @@
 <form (ngSubmit)="onSubmit()" class="container_login">
-    <div class="containerForm">
-        <div class="loginTitle">Login</div>
-        <div class="loginForm">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" [(ngModel)]="formLogin.email"
-                (ngModelChange)="changeField('email', $event)">
+  <div class="containerForm">
+    <div class="loginTitle">{{ "LOGIN.LOGIN_LABEL" | translate }}</div>
+    <div class="loginForm">
+      <label for="email">{{ "REGISTER.EMAIL" | translate }}</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        [(ngModel)]="formLogin.email"
+        (ngModelChange)="changeField('email', $event)"
+      />
 
-            <label for="password">Password</label>
-            <div class="passwordField">
-                <input type="password" [type]="hidePassword ? 'password' : 'text'" id="password" name="password"
-                    [(ngModel)]="formLogin.password" (ngModelChange)="changeField('password', $event)">
-                <button class="buttonEye" mat-icon-button matSuffix (click)="togglePasswordVisibility()"
-                    [attr.aria-label]="'Toggle password visibility'" [attr.aria-pressed]="!hidePassword">
-                    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                </button>
-            </div>
+      <label for="password">{{ "REGISTER.PASSWORD" | translate }}</label>
+      <div class="passwordField">
+        <input
+          type="password"
+          [type]="hidePassword ? 'password' : 'text'"
+          id="password"
+          name="password"
+          [(ngModel)]="formLogin.password"
+          (ngModelChange)="changeField('password', $event)"
+        />
+        <button
+          class="buttonEye"
+          mat-icon-button
+          matSuffix
+          (click)="togglePasswordVisibility()"
+          [attr.aria-label]="'Toggle password visibility'"
+          [attr.aria-pressed]="!hidePassword"
+        >
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+      </div>
 
-            <button type="submit">Login</button>
-            <a (click)="goToRegister()" class="linkRegister">Don't have an account? Register</a>
-        </div>
+      <button type="submit">Login</button>
+      <a (click)="goToRegister()" class="linkRegister">{{
+        "LOGIN.GO_TO_REGISTER" | translate
+      }}</a>
     </div>
+  </div>
 </form>

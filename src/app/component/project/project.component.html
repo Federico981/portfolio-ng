@@ -1,5 +1,5 @@
 <section class="skills-section">
-  <h2>💼 Competenze Tecniche</h2>
+  <h2>💼 {{ "PROJECTS.SKILLS" | translate }}</h2>
   <div class="skills-grid">
     <div class="skill-card" *ngFor="let skill of skills">
       <img [src]="skill.icon" [alt]="skill.name" class="skill-icon" />
@@ -12,7 +12,9 @@
 </section>
 
 <section class="projects-section">
-  <h2 class="titleProjects">🚀 Progetti Realizzati</h2>
+  <h2 class="titleProjects">
+    🚀 {{ "PROJECTS.REALIZED_PROJECTS" | translate }}
+  </h2>
   <div class="projects-grid">
     <div class="project-card" *ngFor="let project of projects">
       <img [src]="project.img" [alt]="project.name" class="project-img" />
