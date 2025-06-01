@@ -45,3 +45,34 @@
     }
   }
 }
+
+/* === Responsive per mobile (max-width: 600px) === */
+@media (max-width: 600px) {
+  .footer {
+    padding: 10px 20px;
+
+    .footer-content {
+      .footer-links-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .footer-links,
+      .footer-lang {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .footer-links {
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}

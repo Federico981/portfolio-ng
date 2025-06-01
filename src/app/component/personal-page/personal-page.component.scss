@@ -94,3 +94,68 @@
     }
   }
 }
+
+/* === Responsive per mobile (max-width: 600px) === */
+@media (max-width: 600px) {
+  .personal-page {
+    padding: 1rem;
+    margin: 1rem auto;
+
+    .profile {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        border-width: 2px;
+      }
+
+      .intro {
+        text-align: center;
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.4;
+        }
+      }
+    }
+
+    .skills-section {
+      margin-top: 1.5rem;
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      ul {
+        li {
+          font-size: 0.95rem;
+          padding: 0.4rem 0;
+        }
+      }
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      a {
+        font-size: 0.9rem;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,72 +1,109 @@
 .container_registration {
-    background-color: #93c5c5;
-    // height: 100vh; // meglio 100vh per occupare tutta la finestra
-    width: 100%;
+  background-color: #93c5c5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .containerForm {
+    width: 400px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 18px;
+    background-color: #f9fdfa;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: center; // centra orizzontalmente
-    align-items: center; // centra verticalmente
+    flex-direction: column;
+
+    .registerTitle {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .registerForm {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      label {
+        font-weight: 500;
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      button {
+        margin-top: 16px;
+        padding: 12px;
+        background-color: #70b3b3;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+
+      div[ng-reflect-ng-if] {
+        color: red;
+        font-size: 13px;
+      }
+    }
+
+    .linkLogin {
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
+
+/* === Responsive per mobile (max-width: 600px) === */
+@media (max-width: 600px) {
+  .container_registration {
+    padding: 1rem 0; // margine verticale
+    align-items: flex-start; // parte dall’alto
 
     .containerForm {
-        width: 400px;
-        margin-bottom: 30px;
-        margin-top: 30px;
-        padding: 18px;
-        background-color: #f9fdfa;
-        border-radius: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
+      width: 90%; // occupa quasi tutta la larghezza
+      max-width: 350px; // non più larga di 350px
+      margin: 1.5rem auto; // spaziatura superiore/inferiore
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-        .registerTitle {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 16px;
+      .registerTitle {
+        font-size: 24px;
+      }
+
+      .registerForm {
+        gap: 8px;
+
+        input {
+          font-size: 13px;
+          padding: 8px;
         }
 
-        .registerForm {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-
-            label {
-                font-weight: 500;
-            }
-
-            input {
-                padding: 10px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-                font-size: 14px;
-            }
-
-            button {
-                margin-top: 16px;
-                padding: 12px;
-                background-color: #70b3b3;
-                color: white;
-                border: none;
-                border-radius: 12px;
-                font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-
-                &:disabled {
-                    background-color: #ccc;
-                    cursor: not-allowed;
-                }
-            }
-
-            div[ng-reflect-ng-if] {
-                color: red;
-                font-size: 13px;
-            }
+        button {
+          font-size: 14px;
+          padding: 10px;
         }
+      }
 
-        .linkLogin {
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
+      .linkLogin {
+        font-size: 0.9rem;
+      }
     }
+  }
 }

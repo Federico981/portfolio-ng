@@ -65,3 +65,30 @@ h3 {
     background-color: #1e7e34;
   }
 }
+
+/* === Responsive per mobile (max-width: 600px) === */
+@media (max-width: 600px) {
+  .quiz-container {
+    padding: 1.5rem 1rem;
+    margin: 1.5rem auto;
+    max-width: 95%;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+
+  .option-button {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .restart-button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+}

@@ -1,102 +1,182 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .container_login {
-    background-color: #93c5c5;
-    height: 100vh; // meglio 100vh per occupare tutta la finestra
-    width: 100%;
+  background-color: #93c5c5;
+  height: 100vh; /* occupa tutta la finestra */
+  width: 100%;
+  display: flex;
+  justify-content: center; /* centra orizzontalmente */
+  align-items: center; /* centra verticalmente */
+  flex-direction: column; /* aggiunto per struttura colonna */
+}
+
+.container_login .containerForm {
+  width: 400px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 18px;
+  background-color: #f9fdfa;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.container_login .containerForm .loginTitle {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.container_login .containerForm .loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 370px;
+}
+
+.container_login .containerForm .loginForm .passwordField {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container_login .containerForm .loginForm .passwordField .buttonEye {
+  color: #70b3b3;
+  background-color: white;
+  margin-top: 0px;
+  padding-top: 7px;
+}
+
+.container_login
+  .containerForm
+  .loginForm
+  [class*="ng-untouched ng-pristine ng-valid"],
+.container_login
+  .containerForm
+  .loginForm
+  [class*="ng-untouched ng-valid ng-dirty"],
+.container_login
+  .containerForm
+  .loginForm
+  [class*="ng-valid ng-dirty ng-touched"] {
+  width: 100%;
+  max-width: 370px;
+}
+
+.container_login .containerForm .loginForm label {
+  font-weight: 500;
+}
+
+.container_login .containerForm .loginForm input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.container_login .containerForm .loginForm button {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #70b3b3;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.container_login .containerForm .loginForm button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.container_login .containerForm .loginForm div[ng-reflect-ng-if] {
+  color: red;
+  font-size: 13px;
+}
+
+.container_login .containerForm .linkRegister {
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* === Responsive per mobile (max-width: 600px) === */
+@media (max-width: 600px) {
+  .container_login {
+    min-height: 85vh; /* obbliga almeno a tutta altezza viewport */
+    padding: 1rem 0;
+    /* justify-content: flex-start; */
+    align-items: center; /* centra orizzontalmente */
+    flex-direction: column;
+  }
+
+  .container_login .containerForm {
+    width: 90%;
+    max-width: 350px;
+    margin: 2rem auto 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .container_login .containerForm .loginTitle {
+    font-size: 24px;
+  }
+
+  .container_login .containerForm .loginForm {
+    gap: 8px;
+  }
+
+  .container_login .containerForm .loginForm input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .container_login .containerForm .loginForm button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* ===== MODIFICA PASSWORD FIELD PER MOBILE ===== */
+  .container_login .containerForm .loginForm .passwordField {
     display: flex;
-    justify-content: center; // centra orizzontalmente
-    align-items: center; // centra verticalmente
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
 
-    .containerForm {
-        width: 400px;
-        margin-bottom: 30px;
-        margin-top: 30px;
-        padding: 18px;
-        background-color: #f9fdfa;
-        border-radius: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
+  .container_login .containerForm .loginForm .passwordField input {
+    flex: 1;
+    min-width: 0;
+    font-size: 13px;
+    padding: 8px;
+  }
 
-        .loginTitle {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 16px;
-        }
+  .container_login .containerForm .loginForm .passwordField .buttonEye {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    // background-color: white;
+    // border-radius: 8px;
+    // border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 0;
+  }
 
-        .loginForm {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            max-width: 370px;
-
-            .passwordField {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                .buttonEye {
-                    color: #70b3b3;
-                    background-color: white;
-                    margin-top: 0px;
-                    padding-top: 7px;
-                }
-            }
-
-            [class*='ng-untouched ng-pristine ng-valid'] {
-                width: 100%;
-                max-width: 370px;
-            }
-
-            [class*='ng-untouched ng-valid ng-dirty'] {
-                width: 100%;
-                max-width: 370px;
-            }
-
-            [class*='ng-valid ng-dirty ng-touched'] {
-                width: 100%;
-                max-width: 370px;
-            }
-
-            label {
-                font-weight: 500;
-            }
-
-            input {
-                padding: 10px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-                font-size: 14px;
-            }
-
-            button {
-                margin-top: 16px;
-                padding: 12px;
-                background-color: #70b3b3;
-                color: white;
-                border: none;
-                border-radius: 12px;
-                font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-
-                &:disabled {
-                    background-color: #ccc;
-                    cursor: not-allowed;
-                }
-            }
-
-            div[ng-reflect-ng-if] {
-                color: red;
-                font-size: 13px;
-            }
-        }
-
-        .linkRegister {
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    }
+  .container_login .containerForm .linkRegister {
+    font-size: 0.9rem;
+  }
 }

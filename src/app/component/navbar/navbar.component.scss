@@ -37,7 +37,6 @@
         }
       }
 
-      // Applica .active solo se NON è logout-link
       a.active:not(.logout-link) {
         color: #007bff;
       }
@@ -53,6 +52,39 @@
 
     &:hover {
       color: #007bff;
+    }
+  }
+}
+
+/* === Responsive per mobile (max-width: 600px) === */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+
+    .navbar-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+    }
+
+    .menu {
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+
+      li {
+        width: 100%;
+        a,
+        .logout-link {
+          display: block;
+          padding: 0.5rem 0;
+          width: 100%;
+        }
+      }
     }
   }
 }
