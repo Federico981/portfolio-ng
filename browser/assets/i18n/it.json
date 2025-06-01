@@ -1,0 +1,101 @@
+{
+  "NAV": {
+    "HOME": "Home",
+    "PROJECTS": "Progetti e Competenze",
+    "CONTACT": "Contatti",
+    "PERSONAL_PAGE": "Chi sono",
+    "LOGOUT": "Logout"
+  },
+  "FOOTER": {
+    "LANGUAGE": "Lingua"
+  },
+  "LOGIN": {
+    "LOGIN_BUTTON": "Accedi",
+    "LOGIN_LABEL": "Accedi",
+    "GO_TO_REGISTER": "Non hai un account? Registrati"
+  },
+  "ABOUT": {
+    "ME": "Chi sono",
+    "PRESENTATION": "Ciao, sono",
+    "MAIN_SKILLS": "Competenze principali",
+    "FOLLOW_ME": "Seguimi",
+    "SELF_DESCRIPTION": "Sviluppatore frontend appassionato di tecnologie web. Amo creare interfacce intuitive, performanti e accessibili. Al momento sto approfondendo Angular e lavorando a progetti personali per migliorare ogni giorno.",
+    "CONTACTS": "Contatti",
+    "COPYRIGHT": "2025 Federico Luca Cilia. Tutti i diritti riservati."
+  },
+  "REGISTER": {
+    "NAME": "Nome:",
+    "SURNAME": "Cognome:",
+    "EMAIL": "Email:",
+    "CONFIRM_EMAIL": "Conferma Email:",
+    "PASSWORD": "Password:",
+    "CONFIRM_PASSWORD": "Conferma Password:",
+    "REGISTER_LABEL": "Registrati",
+    "ACCEPT": "Accetto i",
+    "TERMS_CONDITIONS": "termini e condizioni",
+    "DATA": "e l'uso dei miei dati secondo la"
+  },
+  "HOME": {
+    "CHEER": "Ciao",
+    "SKILLS": "Competenze tecniche",
+    "BOARD": "Bacheca pubblica",
+    "MESSAGES": "Messaggi condivisi",
+    "PLACEHOLDER_MESSAGES": "Scrivi un messaggio..."
+  },
+  "BOARD": {
+    "SHARE": "Condividi"
+  },
+  "PROJECTS": {
+    "SKILLS": "Competenze Tecniche",
+    "REALIZED_PROJECTS": "Progetti Realizzati"
+  },
+  "SKILLS_LEVEL": {
+    "MID": "Intermedio",
+    "ADVANCED": "Avanzato"
+  },
+  "QUIZ": {
+    "QUESTIONS": [
+      {
+        "question": "Quale comando serve a creare un nuovo componente in Angular?",
+        "options": ["ng new", "ng g component", "ng add", "ng serve"],
+        "answer": "ng g component"
+      },
+      {
+        "question": "Qual è il decoratore per creare un servizio in Angular?",
+        "options": ["@NgModule", "@Injectable", "@Component", "@Service"],
+        "answer": "@Injectable"
+      },
+      {
+        "question": "Cos'è un BehaviorSubject?",
+        "options": [
+          "Una direttiva",
+          "Un operatore RxJS",
+          "Un tipo di observable che mantiene l'ultimo valore",
+          "Un modulo Angular"
+        ],
+        "answer": "Un tipo di observable che mantiene l'ultimo valore"
+      }
+    ]
+  },
+  "QUIZ_LABELS": {
+    "QUESTION": "Domanda",
+    "QUIZ_END": "Quiz Terminato!",
+    "SCORE": "Hai risposto correttamente a",
+    "TRY_AGAIN": "Riprova il quiz",
+    "OF": "di",
+    "QUESTIONS": "domande"
+  },
+  "CONTACT": {
+    "ME": "Contattami",
+    "FORM_SUBTITLE": "Compila il form e ti risponderò il prima possibile.",
+    "QUESTION": "Risponderò a ogni tuo messaggio",
+    "SEND": "Invia",
+    "NAME": "Nome",
+    "EMAIL": "Email",
+    "MESSAGES": "Messaggio",
+    "NAME_PLACEHOLDER": "Il tuo nome",
+    "EMAIL_PLACEHOLDER": "esempio@mail.com",
+    "MESSAGE_PLACEHOLDER": "Scrivi qui il tuo messaggio...",
+    "TREATMENT_DATA": "I dati verranno trattati secondo la"
+  }
+}
